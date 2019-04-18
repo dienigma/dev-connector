@@ -62,8 +62,8 @@ router.post(
     profileFields.social = {};
     if (req.body.youtube) profileFields.social.youtube = req.body.youtube;
     if (req.body.twitter) profileFields.social.twitter = req.body.twitter;
-    if (req.body.linkedIn) profileFields.social.linkedIn = req.body.linkedIn;
     if (req.body.facebook) profileFields.social.facebook = req.body.facebook;
+    if (req.body.linkedIn) profileFields.social.linkedIn = req.body.linkedIn;
     if (req.body.instagram) profileFields.social.instagram = req.body.instagram;
 
     Profile.findOne({ user: req.user.id }).then(profile => {
