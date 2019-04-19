@@ -4,18 +4,59 @@ module.exports = function validateProfileInput(data) {
   let errors = {};
 
   data.handle = !isEmpty(data.handle) ? data.handle : "";
-  data.password = !isEmpty(data.password) ? data.password : "";
+  data.status = !isEmpty(data.status) ? data.status : "";
+  data.skills = !isEmpty(data.skills) ? data.skills : "";
 
-  if (!Validator.isEmail(data.email)) {
-    errors.email = "Emails is invalid";
+  if (!Validator.isLength(data.handle, { min: 2, max: 40 })) {
+    errors.handle = "Handle needs to be between 2 and 40 characters";
   }
 
-  if (Validator.isEmpty(data.email)) {
-    errors.email = "An Email field is required";
+  if (Validator.isEmpty(data.handle)) {
+    errors.handle = "Handle cannot be empty";
   }
 
-  if (Validator.isEmpty(data.password)) {
-    errors.password = "Password field is required";
+  if (Validator.isEmpty(data.status)) {
+    errors.status = "Status cannot be empty";
+  }
+
+  if (Validator.isEmpty(data.skills)) {
+    errors.skills = "skills cannot be empty";
+  }
+
+  if (!isEmpty(data.website)) {
+    if (!Validator.isURL(data.website)) {
+      errors.website = "This is not a valid URL";
+    }
+  }
+
+  if (!isEmpty(data.twitter)) {
+    if (!Validator.isURL(data.twitter)) {
+      errors.twitter = "This is not a valid URL";
+    }
+  }
+
+  if (!isEmpty(data.youtube)) {
+    if (!Validator.isURL(data.youtube)) {
+      errors.youtube = "This is not a valid URL";
+    }
+  }
+
+  if (!isEmpty(data.facebook)) {
+    if (!Validator.isURL(data.facebook)) {
+      errors.facebook = "This is not a valid URL";
+    }
+  }
+
+  if (!isEmpty(data.linkedIn)) {
+    if (!Validator.isURL(data.linkedIn)) {
+      errors.linkedIn = "This is not a valid URL";
+    }
+  }
+
+  if (!isEmpty(data.instagram)) {
+    if (!Validator.isURL(data.instagram)) {
+      errors.instagram = "This is not a valid URL";
+    }
   }
 
   return {
